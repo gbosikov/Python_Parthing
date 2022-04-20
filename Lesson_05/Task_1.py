@@ -64,6 +64,8 @@ for u_link in unique_links:
     subject = driver.find_element(By.XPATH, ".//h2[@class='thread-subject']").text
     date = driver.find_element(By.XPATH, ".//div[@class='letter__date']").text
     text = driver.find_element(By.XPATH, "//*[contains(@id, '_BODY')]").text
+    encoding = u_link.encode()
+    mail_info['_id'] = hashlib.md5(encoding).hexdigest()
     mail_info['sender'] = sender
     mail_info['letter_date'] = date
     mail_info['subject'] = subject
