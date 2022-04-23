@@ -1,5 +1,5 @@
 import scrapy
-from jobparser.items import JobparserItem
+from jobparser.items import VacancyparserItem
 from scrapy.http import HtmlResponse
 
 class SpjobruSpider(scrapy.Spider):
@@ -20,5 +20,5 @@ class SpjobruSpider(scrapy.Spider):
         name = response.css("h1::text").get()
         salary = response.xpath("//span[contains(@class, '_2eYAG -gENC _1TcZY dAWx1')]//text()").getall()
         url = response.url
-        yield JobparserItem(name=name, salary=salary, url=url)
+        yield VacancyparserItem(name=name, salary=salary, url=url)
         print()
